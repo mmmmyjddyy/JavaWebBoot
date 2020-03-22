@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>boot-activiti</module>
+        <module>boot-service</module>
+        <module>boot-service-impl</module>
+        <module>boot-user</module>
+        <module>boot-base</module>
+        <module>boot-generator</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.chzu</groupId>
+    <artifactId>boot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>boot</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <mysql.version>8.0.17</mysql.version>
+        <activiti.version>6.0.0</activiti.version>
+        <druid.version>1.1.18</druid.version>
+        <fastjson.version>1.2.51</fastjson.version>
+        <bootstrap-ui.version>1.8.7</bootstrap-ui.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <dynamic.version>2.4.2</dynamic.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!--子模块版本-->
+            <dependency>
+                <groupId>com.chzu</groupId>
+                <artifactId>boot-activiti</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chzu</groupId>
+                <artifactId>boot-base</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chzu</groupId>
+                <artifactId>boot-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chzu</groupId>
+                <artifactId>boot-service-impl</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chzu</groupId>
+                <artifactId>boot-user</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!--连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--数据库-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <scope>runtime</scope>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--fastjson-->
+            <dependency>
+                <artifactId>fastjson</artifactId>
+                <groupId>com.alibaba</groupId>
+                <version>${fastjson.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+
+    <repositories>
+        <repository>
+            <id>alibaba</id>
+            <name>alibaba</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+</project>
