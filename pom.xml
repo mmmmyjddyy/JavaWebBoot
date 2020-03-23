@@ -26,13 +26,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <mysql.version>8.0.17</mysql.version>
+        <!--        <mysql.version>8.0.17</mysql.version>-->
         <activiti.version>6.0.0</activiti.version>
         <druid.version>1.1.18</druid.version>
         <fastjson.version>1.2.51</fastjson.version>
         <bootstrap-ui.version>1.8.7</bootstrap-ui.version>
         <swagger2.version>2.9.2</swagger2.version>
         <dynamic.version>2.4.2</dynamic.version>
+        <sqlserve.version>4.0</sqlserve.version>
+        <mssql-jdbc.version>6.4.0.jre8</mssql-jdbc.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -70,13 +72,25 @@
                 <version>${druid.version}</version>
             </dependency>
             <!--数据库-->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <scope>runtime</scope>
-                <version>${mysql.version}</version>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>mysql</groupId>-->
+            <!--                <artifactId>mysql-connector-java</artifactId>-->
+            <!--                <scope>runtime</scope>-->
+            <!--                <version>${mysql.version}</version>-->
+            <!--            </dependency>-->
             <!--fastjson-->
+            <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId>mssql-jdbc</artifactId><!--sqlserver依赖  驱动jar-->
+                <scope>runtime</scope>
+                <version>${mssql-jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId>sqljdbc4</artifactId>
+                <version>${sqlserve.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <artifactId>fastjson</artifactId>
                 <groupId>com.alibaba</groupId>
@@ -85,14 +99,14 @@
         </dependencies>
     </dependencyManagement>
 
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <repository>

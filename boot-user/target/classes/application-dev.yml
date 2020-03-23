@@ -1,0 +1,68 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+  # 数据库配置
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      datasource:
+        master:
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=ev_master
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          username: root
+          password: 123456
+          # 不加这个会报错(testWhileIdle is true, validationQuery not set)
+          validation-query: ${spring.datasource.dynamic.druid.validation-query}
+        slave:
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=ev_master
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          username: root
+          password: 123456
+          # 不加这个会报错(testWhileIdle is true, validationQuery not set)
+          validation-query: ${spring.datasource.dynamic.druid.validation-query}
+        activiti:
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=ev_activiti
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          username: root
+          password: 123456
+          validation-query: ${spring.datasource.dynamic.druid.validation-query}
+      # druid
+      druid:
+        # 初始化时建立物理连接的个数
+        initial-size: 5
+        # 获取连接时最大等待时间，单位毫秒
+        max-wait: 60000
+        # 最小连接池数量
+        min-idle: 1
+        # 最大连接池数量
+        max-active: 20
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        time-between-eviction-runs-millis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        min-evictable-idle-time-millis: 300000
+        validation-query: select 1
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        max-open-prepared-statements: 50
+        max-pool-prepared-statement-per-connection-size: 20
+        filter:
+          # 打开mergeSql功能；慢SQL记录
+          stat:
+            log-slow-sql: true
+            merge-sql: true
+            slow-sql-millis: 5000
+        #  配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        #filters: stat,wall,logback,config
+
+  # 工作流
+  activiti:
+    # 自动部署验证设置:
+    # true（默认）自动部署流程
+    # false 不自动部署，需要手动部署发布流程
+    check-process-definitions: true
+    # 可选值为: false,true,create-drop,drop-create
+    # 默认为true。为true表示activiti会对数据库中的表进行更新操作，如果不存在，则进行创建。
+    database-schema-update: true

@@ -54,7 +54,6 @@ public class ActivitiController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("pdId",pdId);
         return BaseResponse.ok("请假已提交",jsonObject);
-        
     }
 
     @PostMapping("/qj-approve")

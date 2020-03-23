@@ -13,11 +13,11 @@ import java.util.*;
 
 import static com.boot.base.core.ProjectConstant.*;
 /**
- * ClassName CodeGenerator
- * Description CodeGenerator
- * Author FLZ
- * Date 2020/3/18 13:40
- * Version 1.0
+ * @ClassName CodeGenerator
+ * @Description CodeGenerator
+ * @Author FLZ
+ * @Date 2020/3/18 13:40
+ * @Version 1.0
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
@@ -42,7 +42,8 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("user");
+        genCode("sys_user");
+        genCode("sys_permission");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
 

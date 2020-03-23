@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  #  # 排除原生Druid的快速配置类
+  #  autoconfigure:
+  #    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  profiles:
+    active: dev
+  resources.add-mappings: false
+  # mvc
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+    static-path-pattern: /**
+    async:
+      request-timeout: 60000 # 设置接口超时时间60s
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL #not_null如果有null默认过滤
+
+
+

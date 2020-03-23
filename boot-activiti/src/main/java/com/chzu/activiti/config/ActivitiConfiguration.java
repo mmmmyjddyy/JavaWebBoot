@@ -22,8 +22,8 @@ import java.io.IOException;
  */
 @Configuration
 //@SpringBootApplication(exclude={
-//        org.activiti.spring.boot.SecurityAutoConfiguration.class
-//})
+////        org.activiti.spring.boot.SecurityAutoConfiguration.class
+////})
 public class ActivitiConfiguration extends AbstractProcessEngineAutoConfiguration {
 
 //    @Bean
@@ -33,13 +33,13 @@ public class ActivitiConfiguration extends AbstractProcessEngineAutoConfiguratio
 //    }
 //
 //    @Bean
-//    public SpringProcessEngineConfiguration springProcessEngineConfiguration(
-//            PlatformTransactionManager transactionManager,
-//            SpringAsyncExecutor springAsyncExecutor) throws IOException {
-//
-//        return baseSpringProcessEngineConfiguration(
-//                activitiDataSource(),
-//                transactionManager,
-//                springAsyncExecutor);
-//    }
+////    public SpringProcessEngineConfiguration springProcessEngineConfiguration(
+////            PlatformTransactionManager transactionManager,
+////            SpringAsyncExecutor springAsyncExecutor) throws IOException {
+////
+////        return baseSpringProcessEngineConfiguration(
+////                activitiDataSource(),
+////                transactionManager,
+////                springAsyncExecutor);
+////    }
 }
