@@ -1,28 +1,30 @@
 spring:
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
   # 数据库配置
   datasource:
     dynamic:
       primary: master #设置默认的数据源或者数据源组,默认值即为master
       datasource:
         master:
-          url: jdbc:mysql://localhost:3306/ev_master?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2B8
-          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=ev_master
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
           username: root
-          password: password
+          password: 123456
           # 不加这个会报错(testWhileIdle is true, validationQuery not set)
           validation-query: ${spring.datasource.dynamic.druid.validation-query}
         slave:
-          url: jdbc:mysql://localhost:3306/ev_master?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2B8
-          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=ev_master
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
           username: root
-          password: password
+          password: 123456
           # 不加这个会报错(testWhileIdle is true, validationQuery not set)
           validation-query: ${spring.datasource.dynamic.druid.validation-query}
         activiti:
-          url: jdbc:mysql://localhost:3306/ev_activiti?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2B8
-          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=ev_activiti
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
           username: root
-          password: password
+          password: 123456
           validation-query: ${spring.datasource.dynamic.druid.validation-query}
       # druid
       druid:

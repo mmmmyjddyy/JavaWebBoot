@@ -11,8 +11,8 @@ import javax.annotation.Resource;
 
 
 /**
- * @author ${author}
- * @data ${date}.
+ * author ${author}
+ * data ${date}.
  */
 @Service
 @Transactional

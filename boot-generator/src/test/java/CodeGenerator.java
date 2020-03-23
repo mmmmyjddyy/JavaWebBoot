@@ -13,18 +13,18 @@ import java.util.*;
 
 import static com.boot.base.core.ProjectConstant.*;
 /**
- * @ClassName CodeGenerator
- * @Description CodeGenerator
- * @Author FLZ
- * @Date 2020/3/18 13:40
- * @Version 1.0
+ * ClassName CodeGenerator
+ * Description CodeGenerator
+ * Author FLZ
+ * Date 2020/3/18 13:40
+ * Version 1.0
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/ev_master"+ "?serverTimezone=GMT%2B8";
+    private static final String JDBC_URL = "jdbc:sqlserver://localhost:1433;DatabaseName=ev_master";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "password";
-    private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+    private static final String JDBC_PASSWORD = "123456";
+    private static final String JDBC_DIVER_CLASS_NAME = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
     private static final String PACKAGE_MIDDLE = "\\boot-user"; //自动生成位置所在模块
     private static final String PROJECT_PATH = System.getProperty("user.dir") + PACKAGE_MIDDLE;//项目在硬盘上的基础路径
@@ -119,7 +119,7 @@ public class CodeGenerator {
         TableConfiguration tableConfiguration = new TableConfiguration(context);
         tableConfiguration.setTableName(tableName);
         if (StringUtils.isNotEmpty(modelName))tableConfiguration.setDomainObjectName(modelName);
-        tableConfiguration.setGeneratedKey(new GeneratedKey("id", "Mysql", true, null));
+        tableConfiguration.setGeneratedKey(new GeneratedKey("id", "Sqlserver", true, null));
         context.addTableConfiguration(tableConfiguration);
 
         List<String> warnings;
